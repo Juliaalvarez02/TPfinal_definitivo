@@ -20,6 +20,28 @@ Equipos::~Equipos()
 		delete hora;
 }
 
+void Equipos::actualizarFecha()
+{
+}
+
+void Equipos::imprimirAlerta()
+{
+}
+
+bool Equipos::mantenimientoPreventivo()
+{
+	return false;
+}
+
+Hora* Equipos::obtenerHoraActual()
+{
+	return nullptr;
+}
+
+void Equipos::verificarEquipo()
+{
+}
+
 string Equipos::To_String()
 {
 	return "Codigo: " + codigo + "\n" + "Descripcion: " + descripcion + "\n" + "Dimension: " + to_string(dimension) + "\n" + "Lugar actual: " + lugar_actual + "\n" +

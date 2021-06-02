@@ -9,6 +9,8 @@ class Hora
 	unsigned int hora;
 	unsigned int min;
 public:
+	Hora(unsigned int hora, unsigned int min);
+	~Hora();
 	string ToString();
 	void imprimir();
 };
