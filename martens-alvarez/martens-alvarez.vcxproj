@@ -127,6 +127,7 @@
     <ClCompile Include="Equipos.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Hora.cpp" />
+    <ClCompile Include="ListaT.cpp" />
     <ClCompile Include="MesasAnestesia.cpp" />
     <ClCompile Include="Respirador.cpp" />
     <ClCompile Include="Sistema.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="Equipos.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Hora.h" />
+    <ClInclude Include="ListaT.h" />
     <ClInclude Include="MesasAnestesia.h" />
     <ClInclude Include="Respirador.h" />
     <ClInclude Include="Sistema.h" />

@@ -13,17 +13,17 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
 {
 }
 
-unsigned int Sistema::buscarXcodigo(const string codigo)
+Equipos* Sistema::buscarXcodigo(const string codigo)
 {
     return 0;
 }
 
-unsigned int Sistema::buscarXnombre(string nombre)
+Equipos* Sistema::buscarXnombre(string nombre)
 {
     return 0;
 }
 
-unsigned int Sistema::buscarXtipo()
+Equipos* Sistema::buscarXtipo()
 {
     return 0;
 }
