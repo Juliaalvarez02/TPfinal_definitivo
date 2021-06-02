@@ -2,11 +2,14 @@
 
 Sistema::Sistema(float cuenta_corriente)
 {
+    listaEquipos = new ListaT<Equipos>();
     this->cuenta_corriente = cuenta_corriente;
 }
 
 Sistema::~Sistema()
 {
+    if (listaEquipos != NULL)
+        delete listaEquipos;
 }
 
 void Sistema::rastrearUbicacion(Equipos* equipoRastreado)

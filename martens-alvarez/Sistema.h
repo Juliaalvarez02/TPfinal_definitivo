@@ -1,11 +1,13 @@
 #pragma once 
 #include <string>
+#include "ListaT.h"
 class Equipos;
 
 using namespace std;
 
 class Sistema
 {
+	ListaT<Equipos>* listaEquipos;
 	float cuenta_corriente;
 
 public:
