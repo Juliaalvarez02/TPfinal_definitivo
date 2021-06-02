@@ -9,6 +9,7 @@ typedef enum{fueraDeServicio, EnUso, EnEspera, EnMantenimiento} estado;
 
 class Equipos
 {
+protected:
 	const string codigo;
 	string descripcion;
 	float dimension;

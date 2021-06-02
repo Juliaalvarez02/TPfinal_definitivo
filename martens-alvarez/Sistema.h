@@ -1,5 +1,6 @@
 #pragma once 
 #include <string>
+class Equipos;
 
 using namespace std;
 
@@ -9,11 +10,11 @@ class Sistema
 
 public:
 	//Constructor y destructor
-	Sistema();
+	Sistema(float cuenta_corriente);
 	~Sistema();
 
 	//Metodos
-	void rastrearUbicacion(Equipo* equipoRastreado);
+	void rastrearUbicacion(Equipos* equipoRastreado);
 	unsigned int buscarXcodigo(const string codigo);
 	unsigned int buscarXnombre(string nombre);
 	unsigned int buscarXtipo(); //ver que pasarle

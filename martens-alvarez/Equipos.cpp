@@ -44,9 +44,10 @@ void Equipos::verificarEquipo()
 
 string Equipos::To_String()
 {
-	return "Codigo: " + codigo + "\n" + "Descripcion: " + descripcion + "\n" + "Dimension: " + to_string(dimension) + "\n" + "Lugar actual: " + lugar_actual + "\n" +
-		"Lugar a guardar: " + lugar_a_guardar + "\n" + "Peso: " + to_string(peso) + "\n" + "Estado del equipo: " + to_string(estado_del_equipo) +
-		"\n" + "Fecha de ultima verificacion: " + fecha_ult_verificacion->ToString() + "\n" + "Hora: " + hora->ToString();
+	return "Codigo: " + codigo + "\n" + "Descripcion: " + descripcion + "\n" + "Dimension: " + to_string(dimension) + "\n" 
+		+ "Lugar actual: " + lugar_actual + "\n" + "Lugar a guardar: " + lugar_a_guardar + "\n" + "Peso: " + to_string(peso) 
+		+ "\n" + "Estado del equipo: " + to_string(estado_del_equipo) + "\n" + "Fecha de ultima verificacion: " + 
+		fecha_ult_verificacion->ToString() + "\n" + "Hora: " + hora->ToString();
 }
 
 void Equipos::imprimir()

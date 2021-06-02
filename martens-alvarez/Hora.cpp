@@ -12,7 +12,7 @@ Hora::~Hora()
 
 string Hora::ToString()
 {
-	return "Hora; " + to_string(hora) + "\n" + "Minutos: " + to_string(min);
+	return to_string(hora) + ":" + to_string(min);
 }
 
 void Hora::imprimir()

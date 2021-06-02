@@ -1,14 +1,15 @@
 #include "Sistema.h"
 
-Sistema::Sistema()
+Sistema::Sistema(float cuenta_corriente)
 {
+    this->cuenta_corriente = cuenta_corriente;
 }
 
 Sistema::~Sistema()
 {
 }
 
-void Sistema::rastrearUbicacion(Equipo* equipoRastreado)
+void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
 {
 }
 
