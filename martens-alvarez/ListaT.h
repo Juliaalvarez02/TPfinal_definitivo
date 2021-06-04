@@ -38,6 +38,11 @@ public:
 	unsigned int getItemPos(string clave);
 	unsigned int getCA();
 	unsigned int getTAM();
+	friend ostream& operator<<(ostream& os, ListaT<T>& Lista)
+	{
+		os << Lista.To_String() << endl;
+		return os;
+	}
 };
 
 template<class T>
@@ -252,13 +257,6 @@ template<class T>
 void ListaT<T>::operator-(string clave)
 {
 	Eliminar(clave);
-}
-
-template <class T>
-ostream& operator<<(ostream& os, ListaT<T>& Lista)
-{
-	os << Lista.To_String() << endl;
-	return os;
 }
 
 template <class T>

@@ -14,9 +14,9 @@ using namespace std;
 
 int main() {
 	//creo un equipo de cada tipo
-	Equipos*respirador = new Respirador("111", "bla bla bla", 50, "terapia","terapia", 100, EnUso, &Fecha(5,3,2021));
-	Equipos*electro = new Electrocardiograma("222", "bla bla bla", 55.5, "consultorio", "terapia", 100, EnMantenimiento, &Fecha(5, 4, 2021));
-	Equipos*mesasAnestesia = new MesasAnestesia("333", "bla bla bla", 60, "quirofano", "quirofano", 100, EnEspera, &Fecha(5, 8, 2020));
+	Equipos*respirador = new Respirador("111", "respirador", 50, "terapia","terapia", 100, EnUso, &Fecha(5,3,2021));
+	Equipos*electro = new Electrocardiograma("222", "electro", 55.5, "consultorio", "terapia", 100, EnMantenimiento, &Fecha(5, 4, 2021));
+	Equipos*mesasAnestesia = new MesasAnestesia("333", "mesasAnestesia", 60, "quirofano", "quirofano", 100, EnEspera, &Fecha(5, 8, 2020));
 
 	//creo lista de equipos y agrego los equipos
 	ListaT<Equipos>*listaDeEquipos = new ListaT<Equipos>(20);
