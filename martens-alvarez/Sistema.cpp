@@ -26,9 +26,9 @@ Equipos* Sistema::buscarXnombre(string nombre)
     return 0;
 }
 
-Equipos* Sistema::buscarXtipo()
+Equipos * Sistema::buscarXtipo(Equipos * equipoABuscar)
 {
-    return 0;
+
 }
 
 void Sistema::calcularCostoMantenimiento()
@@ -45,6 +45,16 @@ void Sistema::listarMantenimientosPendientes()
 
 void Sistema::verificarRandom()
 {
+}
+
+ListaT<Equipos>* Sistema::GetListaEquipos()
+{
+	return listaEquipos;
+}
+
+void Sistema::SetLista(ListaT<Equipos>* lista)
+{
+	listaEquipos = lista;
 }
 
 string Sistema::toString()

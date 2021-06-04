@@ -19,15 +19,18 @@ public:
 	void rastrearUbicacion(Equipos* equipoRastreado);
 	Equipos* buscarXcodigo(const string codigo);
 	Equipos* buscarXnombre(string nombre);
-	Equipos* buscarXtipo(); //ver que pasarle
+	Equipos* buscarXtipo(Equipos* equipoABuscar); 
 	void calcularCostoMantenimiento();
 	void listarMantenimientos();
 	void listarMantenimientosPendientes();
 	void verificarRandom();
 
+	//geters y setters
+	ListaT<Equipos>* GetListaEquipos();
+	void SetLista(ListaT <Equipos>* lista);
+
 	//To string e imprimir
 	string toString();
 	void imprimir();
-
 };
 

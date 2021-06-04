@@ -12,6 +12,7 @@ class Fecha
 public:
 	Fecha(unsigned int dia, unsigned int mes, unsigned int anio);
 	~Fecha();
+	//tostring e imprimir
 	string ToString();
 	void imprimir();
 };

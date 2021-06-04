@@ -29,6 +29,7 @@ public:
 	void Listar();
 	T* BuscarxCodigo(const string clave);
 	T* BuscarxNombre(string nombre);
+	T* BuscarxTipo(T*equipo);
 	T* operator [](unsigned int pos);
 	T* getItem(unsigned int pos);
 	string To_String();
@@ -194,6 +195,17 @@ inline T* ListaT<T>::BuscarxNombre(string nombre)
 }
 
 template<class T>
+inline T * ListaT<T>::BuscarxTipo(T * equipo)
+{
+	for (unsigned int i = 0; i < CA; i++)
+	{
+		if (*(lista[i]) == equipo)
+			return lista[i];
+	}
+	return NULL;
+}
+
+template<class T>
 T* ListaT<T>::getItem(unsigned int pos)
 {
 	if (pos < CA && pos >= 0)
@@ -224,7 +236,6 @@ unsigned int ListaT<T>::getItemPos(string clave)
 	return -1;
 }
 
-
 template <class T>
 void ListaT<T>::operator+(T* item)
 {
@@ -250,4 +261,11 @@ ostream& operator<<(ostream& os, ListaT<T>& Lista)
 	return os;
 }
 
-
+template <class T>
+istream& operator>>(istream& in, ListaT<T>& Lista)
+{
+	cout<< "ingrese el tipo de equipo: " << endl;
+	Equipos*aux;
+	in >> aux;
+	return in;
+}

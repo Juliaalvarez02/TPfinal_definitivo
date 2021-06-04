@@ -131,6 +131,7 @@
     <ClCompile Include="MesasAnestesia.cpp" />
     <ClCompile Include="Respirador.cpp" />
     <ClCompile Include="Sistema.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Electrocardiograma.h" />

@@ -1,6 +1,6 @@
 #include "Equipos.h"
 
-Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c, float peso_c, estado estado_c, Fecha * fechaultverif_c, Hora * hora_c)
+Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c, float peso_c, estado estado_c, Fecha * fechaultverif_c)
 {
 	descripcion = descripcion_c;
 	dimension = dimension_c;
@@ -9,15 +9,18 @@ Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c,
 	peso = peso_c;
 	estado_del_equipo = estado_c;
 	fecha_ult_verificacion = new Fecha(*fechaultverif_c);
-	hora = new Hora(*hora_c);
+	calendario = new ListaT<Fecha>();
 }
 
-Equipos::~Equipos()
+Equipos:: ~Equipos()
 {
 	if (fecha_ult_verificacion != NULL)
 		delete fecha_ult_verificacion;
 	if (hora != NULL)
 		delete hora;
+	if (calendario != NULL) {
+		delete calendario;
+	}
 }
 
 void Equipos::actualizarFecha()
