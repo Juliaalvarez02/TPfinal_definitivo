@@ -3,6 +3,7 @@
 #include<iostream>
 #include"Hora.h"
 #include "ListaT.h"
+#include "Fecha.h"
 
 using namespace std;
 
@@ -10,7 +11,6 @@ typedef enum{fueraDeServicio, EnUso, EnEspera, EnMantenimiento} estado;
 
 class Equipos
 {
-	friend class Fecha;
 protected:
 	const string codigo;
 	string descripcion;

@@ -119,7 +119,7 @@ void ListaT<T>::Listar()
 template<class T>
 bool ListaT<T>::AgregarItem(T* item)
 {
-	T* i_f = BuscarItem(item->getclave());
+	T* i_f = BuscarxCodigo(item->getclave());
 	if (i_f != NULL)
 		throw runtime_error("Ya se encuentra en la lista");
 
@@ -222,12 +222,12 @@ T* ListaT<T>::getItem(unsigned int pos)
 template<class T>
 string ListaT<T>::To_String()
 {
-	string Total;
-	for (unsigned int i = 0; i < CA; i++)
-	{
-		Total += lista[i]->To_string();// imprimir
-	}
-	return Total;
+	//string Total;
+	//for (unsigned int i = 0; i < CA; i++)
+	//{
+	//	Total += to_string(lista[i]);// imprimir
+	//}
+	//return Total;
 }
 
 template<class T>
@@ -262,8 +262,8 @@ void ListaT<T>::operator-(string clave)
 template <class T>
 istream& operator>>(istream& in, ListaT<T>& Lista)
 {
-	cout<< "ingrese el tipo de equipo: " << endl;
-	Equipos*aux;
+	cout<< "ingrese el codigo: " << endl;
+	string aux;
 	in >> aux;
 	return in;
 }

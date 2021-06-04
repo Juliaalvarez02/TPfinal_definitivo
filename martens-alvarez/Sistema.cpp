@@ -28,7 +28,7 @@ Equipos* Sistema::buscarXnombre(string nombre)
 
 Equipos * Sistema::buscarXtipo(Equipos * equipoABuscar)
 {
-
+    return nullptr;
 }
 
 void Sistema::calcularCostoMantenimiento()
