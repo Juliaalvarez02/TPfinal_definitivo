@@ -4,6 +4,8 @@
 #include"Hora.h"
 #include "ListaT.h"
 #include "Fecha.h"
+#include <ctime>
+
 
 using namespace std;
 
@@ -33,9 +35,9 @@ public:
 	//Metodos
 	void actualizarFecha();
 	void imprimirAlerta();
-	virtual bool mantenimientoPreventivo();
+	virtual bool mantenimientoPreventivo() = 0;
 	Hora* obtenerHoraActual();
-	virtual void verificarEquipo();
+	virtual void verificarEquipo() = 0;
 	const string GetCodigo() { return codigo; };
 	string GetDescripcion() { return descripcion; };
 

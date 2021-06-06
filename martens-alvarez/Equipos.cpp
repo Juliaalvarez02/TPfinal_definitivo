@@ -25,10 +25,18 @@ Equipos:: ~Equipos()
 
 void Equipos::actualizarFecha()
 {
+	fecha_ult_verificacion->setHoy();
 }
 
 void Equipos::imprimirAlerta()
 {
+	Hora* aux;
+	aux->setHoraActual();
+	Hora* horamax = 
+	hora->setHoraActual();
+	if () {
+
+	}
 }
 
 bool Equipos::mantenimientoPreventivo()
@@ -38,7 +46,7 @@ bool Equipos::mantenimientoPreventivo()
 
 Hora* Equipos::obtenerHoraActual()
 {
-	return nullptr;
+	hora->setHoraActual();
 }
 
 void Equipos::verificarEquipo()

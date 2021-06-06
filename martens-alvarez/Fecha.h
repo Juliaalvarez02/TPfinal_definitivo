@@ -1,17 +1,20 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
 class Fecha
 {
-	unsigned int dia;
-	unsigned int mes;
-	unsigned int anio;
+	tm fecha;
 public:
-	Fecha(unsigned int dia, unsigned int mes, unsigned int anio);
+	Fecha();
+	Fecha(int dia, int mes, int anio);
 	~Fecha();
+
+	void setHoy();
+
 	//tostring e imprimir
 	string ToString();
 	void imprimir();

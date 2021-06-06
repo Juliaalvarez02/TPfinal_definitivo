@@ -1,6 +1,7 @@
 #pragma once 
 #include <string>
 #include "ListaT.h"
+#include "time.h"
 class Equipos;
 
 using namespace std;

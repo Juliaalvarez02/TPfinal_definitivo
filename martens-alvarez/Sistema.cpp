@@ -18,17 +18,17 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
 
 Equipos* Sistema::buscarXcodigo(const string codigo)
 {
-    return 0;
+    listaEquipos->BuscarxCodigo(codigo);
 }
 
 Equipos* Sistema::buscarXnombre(string nombre)
 {
-    return 0;
+    listaEquipos->BuscarxNombre(nombre);
 }
 
-Equipos * Sistema::buscarXtipo(Equipos * equipoABuscar)
+Equipos* Sistema::buscarXtipo(Equipos* equipoABuscar)
 {
-    return nullptr;
+    listaEquipos->BuscarxTipo(equipoABuscar);
 }
 
 void Sistema::calcularCostoMantenimiento()
@@ -45,6 +45,11 @@ void Sistema::listarMantenimientosPendientes()
 
 void Sistema::verificarRandom()
 {
+    int random;
+    srand(time(NULL));
+    random = 1 + rand() % listaEquipos->getCA();
+
+    listaEquipos[random].verificarEquipo();
 }
 
 ListaT<Equipos>* Sistema::GetListaEquipos()
