@@ -222,12 +222,12 @@ T* ListaT<T>::getItem(unsigned int pos)
 template<class T>
 string ListaT<T>::To_String()
 {
-	//string Total;
-	//for (unsigned int i = 0; i < CA; i++)
-	//{
-	//	Total += to_string(lista[i]);// imprimir
-	//}
-	//return Total;
+	string Total;
+	for (unsigned int i = 0; i < CA; i++)
+	{
+		Total += lista[i]->To_String();
+	}
+	return Total;
 }
 
 template<class T>
@@ -260,7 +260,7 @@ void ListaT<T>::operator-(string clave)
 }
 
 template <class T>
-istream& operator>>(istream& in, ListaT<T>& Lista)
+istream& operator>>(istream& in, ListaT<T>& Lista) 
 {
 	cout<< "ingrese el codigo: " << endl;
 	string aux;
