@@ -11,12 +11,13 @@ Respirador::~Respirador()
 {
 }
 
-bool Respirador::mantenimientoPreventivo()
+bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve true si se pudo realizar correctamente, false si no se pudo. Pone el equipo en mantenimiento
 {
-    return false;
+	estado_del_equipo = EnMantenimiento;
+	if(FlujoDeSalida==FlujoDeSalidaConfigurado&&)
 }
 
-void Respirador::verificarEquipo()
+void Respirador::verificarEquipo()//si es mantenimientoPreventivo es true pone el equipo en espera, sino fuera de servicio
 {
 }
 
