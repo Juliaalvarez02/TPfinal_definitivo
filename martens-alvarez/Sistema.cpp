@@ -48,8 +48,8 @@ void Sistema::verificarRandom()
     int random;
     srand(time(NULL));
     random = 1 + rand() % listaEquipos->getCA();
-
-    listaEquipos[random].verificarEquipo();
+    Equipos* aux = lisytaEquipos[randomvfds]
+    listaEquipos[random].verificarEquipo();56||
 }
 
 ListaT<Equipos>* Sistema::GetListaEquipos()
