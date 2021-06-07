@@ -2,7 +2,6 @@
 #include "Equipos.h"
 #include "Electrocardiograma.h"
 #include "Fecha.h"
-#include "Hora.h"
 #include "ListaT.h"
 #include"MesasAnestesia.h"
 #include "Respirador.h"

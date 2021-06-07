@@ -48,7 +48,7 @@ void Sistema::verificarRandom()
     int random;
     srand(time(NULL));
     random = 1 + rand() % listaEquipos->getCA();
-    Equipos* aux = listaEquipos[random];
+    Equipos* aux = (*listaEquipos)[random];
 }
 
 ListaT<Equipos>* Sistema::GetListaEquipos()
@@ -68,4 +68,5 @@ string Sistema::toString()
 
 void Sistema::imprimir()
 {
+    cout << toString() << endl;
 }

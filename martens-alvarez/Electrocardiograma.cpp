@@ -17,6 +17,15 @@ bool Electrocardiograma::mantenimientoPreventivo()
 
 void Electrocardiograma::verificarEquipo()
 {
+	bool verificado = mantenimientoPreventivo();
+	if (verificado == true)
+		estado_del_equipo = EnEspera; //listo para usar
+	if (verificado == false)
+		estado_del_equipo = fueraDeServicio; //no se puede usar
+}
+
+void Electrocardiograma::definirCalendario()
+{
 }
 
 string Electrocardiograma::toString()

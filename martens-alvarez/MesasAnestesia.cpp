@@ -17,6 +17,15 @@ bool MesasAnestesia::mantenimientoPreventivo()
 
 void MesasAnestesia::verificarEquipo()
 {
+	bool verificado = mantenimientoPreventivo();
+	if (verificado == true)
+		estado_del_equipo = EnEspera; //listo para usar
+	if (verificado == false)
+		estado_del_equipo = fueraDeServicio; //no se puede usar
+}
+
+void MesasAnestesia::definirCalendario()
+{
 }
 
 string MesasAnestesia::toString()
