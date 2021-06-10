@@ -17,6 +17,7 @@ Respirador::~Respirador()
 bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve true si se pudo realizar correctamente, 
 //false si no se pudo. Pone el equipo en mantenimiento
 {//taponamiento es flase si el flujo es distinto de cero y true si es igual a cero
+	actualizarFecha();
 	estado_del_equipo = EnMantenimiento;
 	if (FlujoDeSalida != FlujoDeSalidaConfigurado) {
 		if (FlujoDeSalida == 0) {
@@ -47,6 +48,12 @@ void Respirador::verificarEquipo()//si el mantenimientoPreventivo es true pone e
 
 void Respirador::definirCalendario()
 {
+	for (int i = 0; i < calendario->getCA(); i++) {
+		int diaRandom = 1 + rand() % 29;
+		int mesRandom = 1 + rand() % 13;
+		int anioRandom = 2021 + rand() % 2024;
+		calendario[i].AgregarItem(&Fecha(diaRandom, mesRandom, anioRandom));
+	}
 }
 
 string Respirador::toString()

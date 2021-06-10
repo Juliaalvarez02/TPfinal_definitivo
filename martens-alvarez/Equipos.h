@@ -38,6 +38,9 @@ public:
 
 	const string GetCodigo() { return codigo; };
 	string GetDescripcion() { return descripcion; };
+	string getLugarActual();
+	string getLugaraGuardar();
+
 
 	//To string e imprimir
 	string To_String();

@@ -14,6 +14,12 @@ Sistema::~Sistema()
 
 void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
 {
+    Equipos* aux = buscarXtipo(equipoRastreado);
+    if (aux == NULL)
+        throw new exception("No se encontro el equipo");
+    if (aux != NULL) {
+       
+    }
 }
 
 Equipos* Sistema::buscarXcodigo(const string codigo)
@@ -47,8 +53,9 @@ void Sistema::verificarRandom()
 {
     int random;
     srand(time(NULL));
-    random = 1 + rand() % listaEquipos->getCA();
+    random = 1 + rand() % listaEquipos->getCA() - 1;
     Equipos* aux = (*listaEquipos)[random];
+    aux->verificarEquipo();
 }
 
 ListaT<Equipos>* Sistema::GetListaEquipos()

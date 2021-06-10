@@ -4,6 +4,7 @@ class Electrocardiograma :
 	public Equipos
 {
 	bool visualizacionDerivaciones;
+	bool modoDeTraficacion;
 
 public:
 	Electrocardiograma(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c,

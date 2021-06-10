@@ -126,7 +126,6 @@
     <ClCompile Include="Electrocardiograma.cpp" />
     <ClCompile Include="Equipos.cpp" />
     <ClCompile Include="Fecha.cpp" />
-    <ClCompile Include="ListaT.cpp" />
     <ClCompile Include="MesasAnestesia.cpp" />
     <ClCompile Include="Respirador.cpp" />
     <ClCompile Include="Sistema.cpp" />

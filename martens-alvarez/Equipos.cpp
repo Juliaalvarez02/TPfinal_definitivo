@@ -36,6 +36,16 @@ bool Equipos::imprimirAlerta()
 		return true;
 }
 
+string Equipos::getLugarActual()
+{
+	return lugar_actual;
+}
+
+string Equipos::getLugaraGuardar()
+{
+	return lugar_a_guardar;
+}
+
 string Equipos::To_String()
 {
 	return "Codigo: " + codigo + "\n" + "Descripcion: " + descripcion + "\n" + "Dimension: " + to_string(dimension) + "\n" 

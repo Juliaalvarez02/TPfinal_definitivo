@@ -4,6 +4,10 @@ MesasAnestesia::MesasAnestesia(const string codigo_c, string descripcion_c, floa
     string lugaraguardar_c, float peso_c,  Fecha* fechaultverif_c, estado estado_del_equipo ):Equipos(codigo_c, descripcion_c,
         dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c, estado_del_equipo)
 {
+	nivelSuenio = 0;
+	volumenDeFlujo = 0;
+	alarmaAltaFrec = false;
+	alarmaBajaFrecuencia = false;
 }
 
 MesasAnestesia::~MesasAnestesia()
@@ -12,7 +16,17 @@ MesasAnestesia::~MesasAnestesia()
 
 bool MesasAnestesia::mantenimientoPreventivo()
 {
-    return false;
+	estado_del_equipo = EnMantenimiento;
+	if (nivelSuenio < 50)
+		nivelSuenio = 100;
+	if (alarmaAltaFrec == false)
+		alarmaAltaFrec = true;
+	if (alarmaBajaFrecuencia == false)
+		alarmaBajaFrecuencia = true;
+	if (volumenDeFlujo < volumenFijado)
+		volumenDeFlujo = volumenFijado;
+	actualizarFecha();
+	return true;
 }
 
 void MesasAnestesia::verificarEquipo()
@@ -26,6 +40,12 @@ void MesasAnestesia::verificarEquipo()
 
 void MesasAnestesia::definirCalendario()
 {
+	for (int i = 0; i < calendario->getCA(); i++) {
+		int diaRandom = 1 + rand() % 29;
+		int mesRandom = 1 + rand() % 13;
+		int anioRandom = 2021 + rand() % 2024;
+		calendario[i].AgregarItem(&Fecha(diaRandom, mesRandom, anioRandom));
+	}
 }
 
 string MesasAnestesia::toString()
