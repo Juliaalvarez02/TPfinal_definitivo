@@ -17,8 +17,20 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
     Equipos* aux = buscarXtipo(equipoRastreado);
     if (aux == NULL)
         throw new exception("No se encontro el equipo");
+    
     if (aux != NULL) {
-       
+        for(int i = 0;i < listaEquipos->getCA(); i++) {
+            if (dynamic_cast<Electrocardiograma*>(equipoRastreado)!=NULL) {
+                cout << "Lugar actual electro: "<<aux->getLugarActual() << endl;;
+            }
+            if (dynamic_cast<Respirador*>(equipoRastreado) != NULL) {
+                cout <<"Lugar actual respirador: "<< aux->getLugarActual() << endl;;
+            }
+            if (dynamic_cast<MesasAnestesia*>(equipoRastreado) != NULL) {
+                cout << "Lugar actual mesa de anestesia: "<<aux->getLugarActual() << endl;;
+            }
+               
+        }
     }
 }
 
@@ -37,16 +49,27 @@ Equipos* Sistema::buscarXtipo(Equipos* equipoABuscar)
     listaEquipos->BuscarxTipo(equipoABuscar);
 }
 
-void Sistema::calcularCostoMantenimiento()
-{
-}
-
 void Sistema::listarMantenimientos()
 {
 }
 
-void Sistema::listarMantenimientosPendientes()
+float Sistema::listarMantenimientosPendientes()
 {
+    ListaT<Equipos>* listaPendientes;
+    Fecha* diaHoy;
+    diaHoy->setHoy();
+
+    for (int i = 0; i < listaEquipos->getCA(); i++) {
+        if ((*listaEquipos)[i]->getFechaUltVerif() < diaHoy) { //si el todavia no se realizo el mantenimiento lo agrego a la lista de pendientes
+            listaPendientes->AgregarItem((*listaEquipos)[i]);
+        }
+    }
+    
+    float costoTotal = 0;
+    for (int i = 0; i < listaPendientes->getCA(); i++) {
+       (*listaPendientes)[i].
+    }
+    
 }
 
 void Sistema::verificarRandom()

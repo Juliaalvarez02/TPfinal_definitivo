@@ -1,13 +1,14 @@
 #include "Respirador.h"
 
 Respirador::Respirador(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, 
-    string lugaraguardar_c, float peso_c, Fecha* fechaultverif_c, estado estado_del_equipo, int FlujoDeSalida):Equipos(codigo_c, descripcion_c,
+    string lugaraguardar_c, float peso_c, Fecha* fechaultverif_c, estado estado_del_equipo, int FlujoDeSalida, bool alarmaAltaP,
+	bool alarmaBajaP, bool taponamiento):Equipos(codigo_c, descripcion_c,
         dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c, estado_del_equipo)
 {
 	this->FlujoDeSalida = FlujoDeSalida;
-	alarmaAltaPresion = false;
-	alarmaBajaPresion = false;
-	taponamiento = false;
+	alarmaAltaPresion = alarmaAltaP;
+	alarmaBajaPresion = alarmaBajaP;
+	this->taponamiento = taponamiento;
 }
 
 Respirador::~Respirador()
@@ -49,6 +50,7 @@ void Respirador::verificarEquipo()//si el mantenimientoPreventivo es true pone e
 void Respirador::definirCalendario()
 {
 	for (int i = 0; i < calendario->getCA(); i++) {
+		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29;
 		int mesRandom = 1 + rand() % 13;
 		int anioRandom = 2021 + rand() % 2024;

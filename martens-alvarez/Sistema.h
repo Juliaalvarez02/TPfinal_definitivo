@@ -2,6 +2,9 @@
 #include <string>
 #include "ListaT.h"
 #include "time.h"
+#include "Electrocardiograma.h"
+#include "Respirador.h"
+#include "MesasAnestesia.h"
 class Equipos;
 
 using namespace std;
@@ -21,9 +24,8 @@ public:
 	Equipos* buscarXcodigo(const string codigo);
 	Equipos* buscarXnombre(string nombre);
 	Equipos* buscarXtipo(Equipos* equipoABuscar); 
-	void calcularCostoMantenimiento();
 	void listarMantenimientos();
-	void listarMantenimientosPendientes();
+	float listarMantenimientosPendientes();
 	void verificarRandom();
 
 	//geters y setters

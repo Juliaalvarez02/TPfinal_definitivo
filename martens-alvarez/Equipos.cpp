@@ -1,14 +1,16 @@
 #include "Equipos.h"
 
-Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c, float peso_c, Fecha * fechaultverif_c, estado estado_del_equipo)
+Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c, 
+	float peso_c, Fecha * fechaultverif_c, estado estado_del_equipo)
 {
 	descripcion = descripcion_c;
 	dimension = dimension_c;
 	lugar_actual = lugaractual_c;
 	lugar_a_guardar = lugaraguardar_c;
 	peso = peso_c;
-	fecha_ult_verificacion = new Fecha(*fechaultverif_c);
+	fecha_ult_verificacion = fechaultverif_c;
 	calendario = new ListaT<Fecha>();
+	costoMantenimiento = 0;
 }
 
 Equipos:: ~Equipos()
@@ -36,6 +38,15 @@ bool Equipos::imprimirAlerta()
 		return true;
 }
 
+float Equipos::calcularCosto(Equipos* equipo)
+{ //agregar costo en mantenimiento
+	float costoTotal = 0;
+
+	if (dynamic_cast<Electrocardiograma*>(equipo) != NULL) {
+		costoTotal += 
+	}
+}
+
 string Equipos::getLugarActual()
 {
 	return lugar_actual;
@@ -44,6 +55,11 @@ string Equipos::getLugarActual()
 string Equipos::getLugaraGuardar()
 {
 	return lugar_a_guardar;
+}
+
+Fecha* Equipos::getFechaUltVerif()
+{
+	return fecha_ult_verificacion;
 }
 
 string Equipos::To_String()

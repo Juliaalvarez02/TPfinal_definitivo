@@ -1,13 +1,13 @@
 #include "MesasAnestesia.h"
 
 MesasAnestesia::MesasAnestesia(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, 
-    string lugaraguardar_c, float peso_c,  Fecha* fechaultverif_c, estado estado_del_equipo ):Equipos(codigo_c, descripcion_c,
+    string lugaraguardar_c, float peso_c,  Fecha* fechaultverif_c, estado estado_del_equipo, bool alarmaAltafrec,bool alarmaBajafrec ):Equipos(codigo_c, descripcion_c,
         dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c, estado_del_equipo)
 {
 	nivelSuenio = 0;
 	volumenDeFlujo = 0;
-	alarmaAltaFrec = false;
-	alarmaBajaFrecuencia = false;
+	alarmaAltaFrec = alarmaAltafrec;
+	alarmaBajaFrecuencia = alarmaBajafrec;
 }
 
 MesasAnestesia::~MesasAnestesia()
@@ -41,6 +41,7 @@ void MesasAnestesia::verificarEquipo()
 void MesasAnestesia::definirCalendario()
 {
 	for (int i = 0; i < calendario->getCA(); i++) {
+		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29;
 		int mesRandom = 1 + rand() % 13;
 		int anioRandom = 2021 + rand() % 2024;
