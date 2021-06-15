@@ -1,9 +1,9 @@
 #include "Respirador.h"
 
 Respirador::Respirador(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, 
-    string lugaraguardar_c, float peso_c, Fecha* fechaultverif_c, estado estado_del_equipo, int FlujoDeSalida, bool alarmaAltaP,
+    string lugaraguardar_c, float peso_c, Fecha* fechaultverif_c, int FlujoDeSalida, bool alarmaAltaP,
 	bool alarmaBajaP, bool taponamiento):Equipos(codigo_c, descripcion_c,
-        dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c, estado_del_equipo)
+        dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c)
 {
 	this->FlujoDeSalida = FlujoDeSalida;
 	alarmaAltaPresion = alarmaAltaP;
@@ -13,11 +13,13 @@ Respirador::Respirador(const string codigo_c, string descripcion_c, float dimens
 
 Respirador::~Respirador()
 {
+
 }
 
 bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve true si se pudo realizar correctamente, 
 //false si no se pudo. Pone el equipo en mantenimiento
 {//taponamiento es flase si el flujo es distinto de cero y true si es igual a cero
+	float costo_aux = 0;
 	actualizarFecha();
 	estado_del_equipo = EnMantenimiento;
 	if (FlujoDeSalida != FlujoDeSalidaConfigurado) {
@@ -25,14 +27,17 @@ bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve 
 			taponamiento = true; //no hay flujo
 			return false; //el equipo no esta listo para usar
 		}
-		else
-		    FlujoDeSalida = FlujoDeSalidaConfigurado;
+		else {
+			FlujoDeSalida = FlujoDeSalidaConfigurado;
+			costo_aux += 600;
+		}
 	}
 	if (alarmaAltaPresion == false || alarmaBajaPresion == false) {
 		alarmaAltaPresion = true;
 		alarmaBajaPresion = true;
+		costo_aux += 400;
 	}
-
+	SetCostoMantenimiento(costo_aux);
 	if (FlujoDeSalida == FlujoDeSalidaConfigurado && alarmaAltaPresion == true && alarmaBajaPresion == true && taponamiento == false) {
 		return true; //si esta todo ok devuelvo true
 	}
@@ -49,7 +54,7 @@ void Respirador::verificarEquipo()//si el mantenimientoPreventivo es true pone e
 
 void Respirador::definirCalendario()
 {
-	for (int i = 0; i < calendario->getCA(); i++) {
+	for (unsigned int i = 0; i < calendario->getCA(); i++) {
 		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29;
 		int mesRandom = 1 + rand() % 13;

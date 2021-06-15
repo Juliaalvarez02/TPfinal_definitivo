@@ -19,7 +19,7 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
         throw new exception("No se encontro el equipo");
     
     if (aux != NULL) {
-        for(int i = 0;i < listaEquipos->getCA(); i++) {
+        for(unsigned int i = 0;i < listaEquipos->getCA(); i++) {
             if (dynamic_cast<Electrocardiograma*>(equipoRastreado)!=NULL) {
                 cout << "Lugar actual electro: "<<aux->getLugarActual() << endl;;
             }
@@ -51,25 +51,48 @@ Equipos* Sistema::buscarXtipo(Equipos* equipoABuscar)
 
 void Sistema::listarMantenimientos()
 {
+    ListaT<Equipos>* listaHechos;
+    Fecha* diaHoy;
+    diaHoy->setHoy();
+
+    for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {
+        if ((*listaEquipos)[i]->getFechaUltVerif()==diaHoy) { 
+            listaHechos->AgregarItem((*listaEquipos)[i]);
+        }
+    }
+
+    float costoTotal = 0;
+    for (unsigned int i = 0; i < listaHechos->getCA(); i++) {
+        costoTotal += (*listaHechos)[i]->getCosto();
+    }
 }
 
-float Sistema::listarMantenimientosPendientes()
+void Sistema::listarMantenimientosPendientes()
 {
     ListaT<Equipos>* listaPendientes;
     Fecha* diaHoy;
     diaHoy->setHoy();
 
-    for (int i = 0; i < listaEquipos->getCA(); i++) {
+    for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {
         if ((*listaEquipos)[i]->getFechaUltVerif() < diaHoy) { //si el todavia no se realizo el mantenimiento lo agrego a la lista de pendientes
             listaPendientes->AgregarItem((*listaEquipos)[i]);
         }
     }
     
     float costoTotal = 0;
-    for (int i = 0; i < listaPendientes->getCA(); i++) {
-       (*listaPendientes)[i].
+    for (unsigned int i = 0; i < listaPendientes->getCA(); i++) {
+        costoTotal += (*listaPendientes)[i]->getCosto();
     }
-    
+    if (costoTotal < 2000 || listaPendientes->getCA()<5) {
+        return;
+    }
+    else {
+        for (unsigned int i = 0; i < listaPendientes->getCA(); i++) {
+            (*listaPendientes)[i]->verificarEquipo();
+        }
+        float i = cuenta_corriente - costoTotal;
+        SetCuenta_corriente(i);
+    }
 }
 
 void Sistema::verificarRandom()

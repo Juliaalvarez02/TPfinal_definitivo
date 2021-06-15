@@ -1,8 +1,8 @@
 #include "Electrocardiograma.h"
 
 Electrocardiograma::Electrocardiograma(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c,
-    string lugaraguardar_c, float peso_c, Fecha* fechaultverif_c, estado estado_del_equipo, bool visualizacion, bool traficacion)
-	:Equipos(codigo_c, descripcion_c, dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c, estado_del_equipo )
+    string lugaraguardar_c, float peso_c, Fecha* fechaultverif_c, bool visualizacion, bool traficacion)
+	:Equipos(codigo_c, descripcion_c, dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c)
 {
 	visualizacionDerivaciones = visualizacion;
 	modoDeTraficacion = traficacion;
@@ -14,12 +14,18 @@ Electrocardiograma::~Electrocardiograma()
 
 bool Electrocardiograma::mantenimientoPreventivo()
 {
+	float costo_aux = 0;
 	estado_del_equipo = EnMantenimiento;
-	if (visualizacionDerivaciones == false)
+	if (visualizacionDerivaciones == false) {
 		visualizacionDerivaciones = true;
-	if (modoDeTraficacion == false)
-		visualizacionDerivaciones = true;
+		costo_aux += 100;
+	}
+	if (modoDeTraficacion == false) {
+		modoDeTraficacion = true;
+		costo_aux += 500;
+	}
 	actualizarFecha();
+	SetCostoMantenimiento(costo_aux);
 	return true;
 }
 
@@ -34,12 +40,12 @@ void Electrocardiograma::verificarEquipo()
 
 void Electrocardiograma::definirCalendario()
 {
-	for (int i = 0; i < calendario->getCA(); i++) {
+	for (unsigned int i = 0; i < calendario->getCA(); i++) {
 		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29;
 		int mesRandom = 1 + rand() % 13;
 		int anioRandom = 2021 + rand() % 2024;
-		calendario[i].AgregarItem(&Fecha(diaRandom, mesRandom, anioRandom));
+		calendario[i] + (&Fecha(diaRandom, mesRandom, anioRandom));
 	}
 }
 

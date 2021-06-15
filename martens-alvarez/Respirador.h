@@ -10,7 +10,7 @@ class Respirador :
 
 public:
 	Respirador(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c,
-		float peso_c, Fecha* fechaultverif_c, estado estado_del_equipo = EnEspera, int FlujoDeSalida, bool alarmaAltaP,
+		float peso_c, Fecha* fechaultverif_c, int FlujoDeSalida, bool alarmaAltaP,
 		bool alarmaBajaP, bool taponamiento);
 	virtual ~Respirador();
 

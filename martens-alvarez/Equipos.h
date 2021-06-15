@@ -30,7 +30,7 @@ protected:
 public:
 	//Constructor y destructor
 	Equipos(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c, 
-		float peso_c, Fecha* fechaultverif_c, estado estado_del_equipo=EnEspera);
+		float peso_c, Fecha* fechaultverif_c);
 	virtual ~Equipos();
 
 	//Metodos
@@ -39,13 +39,14 @@ public:
 	virtual bool mantenimientoPreventivo() = 0;
 	virtual void verificarEquipo() = 0;
 	virtual void definirCalendario() = 0;
-	float calcularCosto(Equipos* equipo);
 
 	const string GetCodigo() { return codigo; };
 	string GetDescripcion() { return descripcion; };
 	string getLugarActual();
 	string getLugaraGuardar();
 	Fecha* getFechaUltVerif();
+	void SetCostoMantenimiento(float costo) { costoMantenimiento = costo; };
+	float getCosto() { return costoMantenimiento; };
 
 
 	//To string e imprimir

@@ -25,12 +25,13 @@ public:
 	Equipos* buscarXnombre(string nombre);
 	Equipos* buscarXtipo(Equipos* equipoABuscar); 
 	void listarMantenimientos();
-	float listarMantenimientosPendientes();
+	void listarMantenimientosPendientes();
 	void verificarRandom();
 
 	//geters y setters
 	ListaT<Equipos>* GetListaEquipos();
 	void SetLista(ListaT <Equipos>* lista);
+	void SetCuenta_corriente(float precio) { cuenta_corriente = precio; };
 
 	//To string e imprimir
 	string toString();

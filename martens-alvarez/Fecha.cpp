@@ -1,4 +1,5 @@
 #include "Fecha.h"
+#define _CRT_SECURE_NO_WARNINGS_
 
 Fecha::Fecha()
 {

@@ -13,9 +13,9 @@ using namespace std;
 
 int main() {
 	//creo un equipo de cada tipo
-	Equipos*respirador = new Respirador("111", "respirador", 50, "terapia","terapia", 100, EnUso, &Fecha(5,3,2021));
-	Equipos*electro = new Electrocardiograma("222", "electro", 55.5, "consultorio", "terapia", 100, EnMantenimiento, &Fecha(5, 4, 2021));
-	Equipos*mesasAnestesia = new MesasAnestesia("333", "mesasAnestesia", 60, "quirofano", "quirofano", 100, EnEspera, &Fecha(5, 8, 2020));
+	Equipos* respirador = new Respirador("111", "respirador", 50, "terapia","terapia", 100, &Fecha(5,3,2021), 90, false, true, false);
+	Equipos* electro = new Electrocardiograma("222", "electro", 55.5, "consultorio", "terapia", 100, &Fecha(5, 4, 2021), false, true);
+	Equipos* mesasAnestesia = new MesasAnestesia("333", "mesasAnestesia", 60, "quirofano", "quirofano", 100, &Fecha(5, 8, 2020), false, true);
 
 	//creo lista de equipos y agrego los equipos
 	ListaT<Equipos>*listaDeEquipos = new ListaT<Equipos>(20);
@@ -44,22 +44,13 @@ int main() {
 
 	//verifico el mantenimiento del electro
 	electro->verificarEquipo();
-
-	//pruebo metodo imprimir alerta
-	try {
-		electro->imprimirAlerta();
-	}
-	catch (std::exception &e3) {
-		cout << e3.what() << endl;
-	}
+	mesasAnestesia->verificarEquipo();
 
 	//pruebo metodos del sistema
 	sistema->rastrearUbicacion(mesasAnestesia); 
 	sistema->buscarXcodigo(mesasAnestesia->GetCodigo());
 	sistema->buscarXnombre(respirador->GetDescripcion());
 	sistema->buscarXtipo(electro);
-	sistema->listarMantenimientos();
-	sistema->listarMantenimientosPendientes();
 	sistema->verificarRandom();
 
 	//imprimo la lista de equipos
@@ -69,6 +60,16 @@ int main() {
 	*listaDeEquipos - electro->GetCodigo();
 	cout << listaDeEquipos<< endl;
 	
+	//pruebo metodos al final del dia
+	sistema->listarMantenimientosPendientes();
+	sistema->listarMantenimientos();
+	try {
+		electro->imprimirAlerta();
+	}
+	catch (std::exception& e3) {
+		cout << e3.what() << endl;
+	}
+
 	//libero memoria
 	delete respirador;
 	delete mesasAnestesia;

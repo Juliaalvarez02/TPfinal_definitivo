@@ -1,7 +1,7 @@
 #include "Equipos.h"
 
 Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c, 
-	float peso_c, Fecha * fechaultverif_c, estado estado_del_equipo)
+	float peso_c, Fecha * fechaultverif_c)
 {
 	descripcion = descripcion_c;
 	dimension = dimension_c;
@@ -11,6 +11,7 @@ Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c,
 	fecha_ult_verificacion = fechaultverif_c;
 	calendario = new ListaT<Fecha>();
 	costoMantenimiento = 0;
+	estado_del_equipo = EnEspera;
 }
 
 Equipos:: ~Equipos()
@@ -36,15 +37,6 @@ bool Equipos::imprimirAlerta()
 	}
 	else
 		return true;
-}
-
-float Equipos::calcularCosto(Equipos* equipo)
-{ //agregar costo en mantenimiento
-	float costoTotal = 0;
-
-	if (dynamic_cast<Electrocardiograma*>(equipo) != NULL) {
-		costoTotal += 
-	}
 }
 
 string Equipos::getLugarActual()

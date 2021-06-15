@@ -1,8 +1,8 @@
 #include "MesasAnestesia.h"
 
 MesasAnestesia::MesasAnestesia(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, 
-    string lugaraguardar_c, float peso_c,  Fecha* fechaultverif_c, estado estado_del_equipo, bool alarmaAltafrec,bool alarmaBajafrec ):Equipos(codigo_c, descripcion_c,
-        dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c, estado_del_equipo)
+    string lugaraguardar_c, float peso_c,  Fecha* fechaultverif_c, bool alarmaAltafrec,bool alarmaBajafrec ):Equipos(codigo_c, descripcion_c,
+        dimension_c, lugaractual_c, lugaraguardar_c, peso_c, fechaultverif_c)
 {
 	nivelSuenio = 0;
 	volumenDeFlujo = 0;
@@ -16,15 +16,26 @@ MesasAnestesia::~MesasAnestesia()
 
 bool MesasAnestesia::mantenimientoPreventivo()
 {
+	//definimos costos fijos de cada mantenimiento
+	float costo_aux = 0;
 	estado_del_equipo = EnMantenimiento;
-	if (nivelSuenio < 50)
+	if (nivelSuenio < 50) {
 		nivelSuenio = 100;
-	if (alarmaAltaFrec == false)
+		costo_aux += 200;
+	}
+	if (alarmaAltaFrec == false) {
 		alarmaAltaFrec = true;
-	if (alarmaBajaFrecuencia == false)
+		costo_aux += 200;
+	}
+	if (alarmaBajaFrecuencia == false) {
 		alarmaBajaFrecuencia = true;
-	if (volumenDeFlujo < volumenFijado)
+		costo_aux += 200;
+	}
+	if (volumenDeFlujo < volumenFijado) {
 		volumenDeFlujo = volumenFijado;
+		costo_aux += 200;
+	}
+	SetCostoMantenimiento(costo_aux);
 	actualizarFecha();
 	return true;
 }
@@ -40,7 +51,7 @@ void MesasAnestesia::verificarEquipo()
 
 void MesasAnestesia::definirCalendario()
 {
-	for (int i = 0; i < calendario->getCA(); i++) {
+	for (unsigned int i = 0; i < calendario->getCA(); i++) {
 		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29;
 		int mesRandom = 1 + rand() % 13;
