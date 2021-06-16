@@ -1,6 +1,5 @@
 #include "Fecha.h"
 
-
 Fecha::Fecha()
 {
 	fecha.tm_hour = 0;

@@ -1,12 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS_
 #pragma once
 #include <string>
 #include<iostream>
 #include "ListaT.h"
 #include "Fecha.h"
 #include <ctime>
-#include "Electrocardiograma.h"
-#include "Respirador.h"
-#include "MesasAnestesia.h"
 
 using namespace std;
 

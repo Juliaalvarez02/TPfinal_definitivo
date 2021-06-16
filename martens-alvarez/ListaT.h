@@ -18,24 +18,22 @@ public:
 	bool AgregarItem(T* item);
 	void operator+(T* item);
 
-	T* Quitar(string clave);
+	T* Quitar(T* item);
 	T* QuitarenPos(unsigned int pos);
 
-	void Eliminar(string clave);
-	void operator-(string clave);
+	void Eliminar(T* item);
+	void operator-(T* item);
 
-	void Eliminar(unsigned int pos);
+	void eliminar(unsigned int pos);
 
 	void Listar();
-	T* BuscarxCodigo(const string clave);
-	T* BuscarxNombre(string nombre);
 	T* BuscarxTipo(T*equipo);
 	T* operator [](unsigned int pos);
 	T* getItem(unsigned int pos);
 	string To_String();
 
 	void Redimensionalizar();
-	unsigned int getItemPos(string clave);
+	unsigned int getItemPos(T* item);
 	unsigned int getCA();
 	unsigned int getTAM();
 	friend ostream& operator<<(ostream& os, ListaT<T>& Lista)
@@ -119,7 +117,7 @@ void ListaT<T>::Listar()
 template<class T>
 bool ListaT<T>::AgregarItem(T* item)
 {
-	T* i_f = BuscarxCodigo(item->getclave());
+	T* i_f = BuscarxTipo(item);
 	if (i_f != NULL)
 		throw runtime_error("Ya se encuentra en la lista");
 
@@ -132,9 +130,9 @@ bool ListaT<T>::AgregarItem(T* item)
 
 
 template<class T>
-T* ListaT<T>::Quitar(string clave)
+T* ListaT<T>::Quitar(T* item)
 {
-	unsigned int pos = getItemPos(clave);
+	unsigned int pos = getItemPos(item);
 	T* aux = NULL;
 
 	aux = QuitarenPos(pos);
@@ -160,15 +158,15 @@ T* ListaT<T>::QuitarenPos(unsigned int pos) {
 
 
 template<class T>
-void ListaT<T>::Eliminar(string clave) {
+void ListaT<T>::Eliminar(T* item) {
 
-	unsigned int pos = getItemPos(clave);
-	Eliminar(pos);
+	unsigned int pos = getItemPos(item);
+	eliminar(pos);
 }
 
 
 template<class T>
-void ListaT<T>::Eliminar(unsigned int pos) {
+void ListaT<T>::eliminar(unsigned int pos) {
 
 	T* dato = NULL;
 	dato = QuitarenPos(pos);
@@ -178,33 +176,11 @@ void ListaT<T>::Eliminar(unsigned int pos) {
 }
 
 template<class T>
-T* ListaT<T>::BuscarxCodigo(const string clave)
-{
-	for (unsigned int i = 0; i < CA; i++)
-	{
-		if (*(lista[i]) == clave)
-			return lista[i];
-	}
-	return NULL;
-}
-
-template<class T>
-inline T* ListaT<T>::BuscarxNombre(string nombre)
-{
-	for (unsigned int i = 0; i < CA; i++)
-	{
-		if (*(lista[i]) == nombre)
-			return lista[i];
-	}
-	return NULL;
-}
-
-template<class T>
 inline T * ListaT<T>::BuscarxTipo(T * equipo)
 {
 	for (unsigned int i = 0; i < CA; i++)
 	{
-		if (*(lista[i]) == equipo)
+		if (lista[i] == equipo)
 			return lista[i];
 	}
 	return NULL;
@@ -231,11 +207,11 @@ string ListaT<T>::To_String()
 }
 
 template<class T>
-unsigned int ListaT<T>::getItemPos(string clave)
+unsigned int ListaT<T>::getItemPos(T* item)
 {
 	for (unsigned int i = 0; i < CA; i++)
 	{
-		if (*(lista[i]) == clave)
+		if (lista[i] == item)
 			return i;
 	}
 	return -1;
@@ -254,9 +230,9 @@ inline T* ListaT<T>::operator[](unsigned int pos)
 }
 
 template<class T>
-void ListaT<T>::operator-(string clave)
+void ListaT<T>::operator-(T* item)
 {
-	Eliminar(clave);
+	Eliminar(item);
 }
 
 template <class T>

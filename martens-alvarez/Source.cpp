@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS_
 #pragma once
 #include "Equipos.h"
 #include "Electrocardiograma.h"
@@ -57,7 +58,7 @@ int main() {
 	cout << listaDeEquipos->To_String() << endl;
 
 	//probando sobrecarga
-	*listaDeEquipos - electro->GetCodigo();
+	*listaDeEquipos - electro;
 	cout << listaDeEquipos<< endl;
 	
 	//pruebo metodos al final del dia

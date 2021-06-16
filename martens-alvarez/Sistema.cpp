@@ -34,25 +34,38 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
     }
 }
 
-Equipos* Sistema::buscarXcodigo(const string codigo)
+void Sistema::buscarXcodigo(const string codigo)
 {
-    listaEquipos->BuscarxCodigo(codigo);
+    for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {
+        if ((*listaEquipos)[i]->GetCodigo()==codigo) {
+            (*listaEquipos)[i]->imprimir();
+        }
+    }
 }
 
-Equipos* Sistema::buscarXnombre(string nombre)
+void Sistema::buscarXnombre(string nombre)
 {
-    listaEquipos->BuscarxNombre(nombre);
+    for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {
+        if ((*listaEquipos)[i]->GetDescripcion() == nombre) {
+            (*listaEquipos)[i]->imprimir();
+        }
+    }
 }
 
 Equipos* Sistema::buscarXtipo(Equipos* equipoABuscar)
 {
-    listaEquipos->BuscarxTipo(equipoABuscar);
+    for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {
+        if ((*listaEquipos)[i] == equipoABuscar) {
+            (*listaEquipos)[i]->imprimir();
+            return (*listaEquipos)[i];
+        }
+    }
 }
 
 void Sistema::listarMantenimientos()
 {
-    ListaT<Equipos>* listaHechos;
-    Fecha* diaHoy;
+    ListaT<Equipos>* listaHechos = new ListaT<Equipos>();
+    Fecha* diaHoy = NULL;
     diaHoy->setHoy();
 
     for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {
@@ -69,8 +82,8 @@ void Sistema::listarMantenimientos()
 
 void Sistema::listarMantenimientosPendientes()
 {
-    ListaT<Equipos>* listaPendientes;
-    Fecha* diaHoy;
+    ListaT<Equipos>* listaPendientes= new ListaT<Equipos>();
+    Fecha* diaHoy = NULL;
     diaHoy->setHoy();
 
     for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {

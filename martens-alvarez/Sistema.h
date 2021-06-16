@@ -21,8 +21,8 @@ public:
 
 	//Metodos
 	void rastrearUbicacion(Equipos* equipoRastreado);
-	Equipos* buscarXcodigo(const string codigo);
-	Equipos* buscarXnombre(string nombre);
+	void buscarXcodigo(const string codigo);
+	void buscarXnombre(string nombre);
 	Equipos* buscarXtipo(Equipos* equipoABuscar); 
 	void listarMantenimientos();
 	void listarMantenimientosPendientes();

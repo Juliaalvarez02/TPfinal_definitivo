@@ -1,5 +1,5 @@
-#pragma once
 #define _CRT_SECURE_NO_WARNINGS_
+#pragma once
 #include <string>
 #include <iostream>
 #include <ctime>
