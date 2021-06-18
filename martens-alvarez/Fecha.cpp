@@ -25,10 +25,6 @@ Fecha::Fecha(int dia, int mes, int anio)
 	fecha.tm_wday = 0;
 	fecha.tm_yday = 0;
 	fecha.tm_isdst = 0;
-
-	fecha.tm_mday = dia;
-	fecha.tm_mon = mes;
-	fecha.tm_year = anio;
 }
 
 Fecha::~Fecha()

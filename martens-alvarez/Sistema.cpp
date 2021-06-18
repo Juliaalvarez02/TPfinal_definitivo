@@ -81,7 +81,7 @@ void Sistema::listarMantenimientos()
 void Sistema::listarMantenimientosPendientes()
 {
     ListaT<Equipos>* listaPendientes= new ListaT<Equipos>(); //hacemos lista para los mantenimientos pendientes
-    Fecha* diaHoy = NULL; //dia de hoy
+    Fecha* diaHoy = new Fecha(); //dia de hoy
     diaHoy->setHoy();
 
     for (unsigned int i = 0; i < listaEquipos->getCA(); i++) { //recorremos la lista de equipos
