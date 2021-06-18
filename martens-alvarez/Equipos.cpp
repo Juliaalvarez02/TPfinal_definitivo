@@ -1,7 +1,7 @@
 #include "Equipos.h"
 
 Equipos::Equipos(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c, 
-	float peso_c, Fecha * fechaultverif_c)
+	float peso_c, Fecha * fechaultverif_c):codigo(codigo_c)
 {
 	descripcion = descripcion_c;
 	dimension = dimension_c;

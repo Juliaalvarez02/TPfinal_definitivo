@@ -19,18 +19,15 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
         throw new exception("No se encontro el equipo");
     
     if (aux != NULL) {
-        for(unsigned int i = 0;i < listaEquipos->getCA(); i++) {
-            if (dynamic_cast<Electrocardiograma*>(equipoRastreado)!=NULL) { //si es un electro imprimimos su ubicacion
-                cout << "Lugar actual electro: "<<aux->getLugarActual() << endl;;
-            }
-            if (dynamic_cast<Respirador*>(equipoRastreado) != NULL) { //si es un respirador imprimimos su ubicacion
-                cout <<"Lugar actual respirador: "<< aux->getLugarActual() << endl;;
-            }
-            if (dynamic_cast<MesasAnestesia*>(equipoRastreado) != NULL) { //si es una mesa de anestesia imprimimos su ubicacion
-                cout << "Lugar actual mesa de anestesia: "<<aux->getLugarActual() << endl;;
-            }
-               
-        }
+       if (dynamic_cast<Electrocardiograma*>(equipoRastreado)!=NULL) { //si es un electro imprimimos su ubicacion
+            cout << "Lugar actual electro: "<<aux->getLugarActual() << endl;;
+       }
+       if (dynamic_cast<Respirador*>(equipoRastreado) != NULL) { //si es un respirador imprimimos su ubicacion
+             cout <<"Lugar actual respirador: "<< aux->getLugarActual() << endl;;
+       }
+       if (dynamic_cast<MesasAnestesia*>(equipoRastreado) != NULL) { //si es una mesa de anestesia imprimimos su ubicacion
+             cout << "Lugar actual mesa de anestesia: " << aux->getLugarActual() << endl;;
+       }
     }
 }
 

@@ -20,11 +20,15 @@ Fecha::Fecha(int dia, int mes, int anio)
 	fecha.tm_min = 0;
 	fecha.tm_sec = 0;
 	fecha.tm_mday = dia;
-	fecha.tm_mon = mes - 1;
-	fecha.tm_year = anio - 1900;
+	fecha.tm_mon = mes-1;
+	fecha.tm_year = anio-1900;
 	fecha.tm_wday = 0;
 	fecha.tm_yday = 0;
 	fecha.tm_isdst = 0;
+
+	fecha.tm_mday = dia;
+	fecha.tm_mon = mes;
+	fecha.tm_year = anio;
 }
 
 Fecha::~Fecha()
@@ -34,18 +38,15 @@ Fecha::~Fecha()
 void Fecha::setHoy()
 {
 	time_t now = time(0);
-	tm* ltm=NULL;
-	localtime_s(ltm, &now); //obtengo fecha actual
-	fecha.tm_mday = ltm->tm_mday;
-	fecha.tm_mon = ltm->tm_mon;
-	fecha.tm_year = ltm->tm_year;
+	tm* aux = localtime(&now); //obtengo fecha actual
+	fecha.tm_mday = aux->tm_mday;
+	fecha.tm_mon = aux->tm_mon;
+	fecha.tm_year = aux->tm_year;
 }
 
 string Fecha::ToString()
 {
-	return to_string(fecha.tm_year + 1900) +
-		"/" + to_string(fecha.tm_mon + 1) +
-		"/" + to_string(fecha.tm_mday);
+	return to_string(fecha.tm_mday) +"/" + to_string(fecha.tm_mon + 1) + "/" + to_string(fecha.tm_year + 1900);
 }
 
 void Fecha::imprimir()

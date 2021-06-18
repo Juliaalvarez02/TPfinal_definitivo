@@ -13,7 +13,7 @@ class MesasAnestesia :
 
 public:
 	MesasAnestesia(const string codigo_c, string descripcion_c, float dimension_c, string lugaractual_c, string lugaraguardar_c,
-		float peso_c, Fecha* fechaultverif_c, bool alarmaAltafrec, bool alarmaBajafrec);
+		float peso_c, Fecha* fechaultverif_c, bool alarmaAltafrec, bool alarmaBajafrec, int nivel, int vol);
 	virtual ~MesasAnestesia();
 
 	bool mantenimientoPreventivo();

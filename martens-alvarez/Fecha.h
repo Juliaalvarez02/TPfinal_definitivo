@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS_
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include <string>
 #include <iostream>

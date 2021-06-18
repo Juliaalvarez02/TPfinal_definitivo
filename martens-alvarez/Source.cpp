@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS_
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include "Equipos.h"
 #include "Electrocardiograma.h"
@@ -15,8 +15,10 @@ using namespace std;
 int main() {
 	//creo un equipo de cada tipo
 	Equipos* respirador = new Respirador("111", "respirador", 50, "terapia","terapia", 100, &Fecha(5,3,2021), 90, false, true, false);
-	Equipos* electro = new Electrocardiograma("222", "electro", 55.5, "consultorio", "terapia", 100, &Fecha(5, 4, 2021), false, true);
-	Equipos* mesasAnestesia = new MesasAnestesia("333", "mesasAnestesia", 60, "quirofano", "quirofano", 100, &Fecha(5, 8, 2020), false, true);
+	Equipos* electro = new Electrocardiograma("222", "electro", 55.5, "consultorio", "terapia", 100, &Fecha(5, 4, 2021), false, 
+		true);
+	Equipos* mesasAnestesia = new MesasAnestesia("333", "mesasAnestesia", 60, "quirofano", "quirofano", 100, &Fecha(5, 8, 2020), 
+		false, true, 45, 100);
 
 	//creo lista de equipos y agrego los equipos
 	ListaT<Equipos>*listaDeEquipos = new ListaT<Equipos>(20);
@@ -46,6 +48,7 @@ int main() {
 	//verifico el mantenimiento del electro
 	electro->verificarEquipo();
 	mesasAnestesia->verificarEquipo();
+	respirador->verificarEquipo();
 
 	//pruebo metodos del sistema
 	sistema->rastrearUbicacion(mesasAnestesia); 
