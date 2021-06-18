@@ -26,12 +26,12 @@ Equipos:: ~Equipos()
 
 void Equipos::actualizarFecha()
 {
-	fecha_ult_verificacion->setHoy();
+	fecha_ult_verificacion->setHoy(); //para cambiar la fecha de ultima verificacion a hoy
 }
 
 bool Equipos::imprimirAlerta()
 {
-	if (lugar_actual != lugar_a_guardar) {
+	if (lugar_actual != lugar_a_guardar) { //si esta en un lugar distinto al que debe estar
 		cout << "Se encuentra fuera de lugar" << endl;
 		return false;
 	}

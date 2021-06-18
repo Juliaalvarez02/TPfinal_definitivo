@@ -14,38 +14,38 @@ Electrocardiograma::~Electrocardiograma()
 
 bool Electrocardiograma::mantenimientoPreventivo()
 {
-	float costo_aux = 0;
-	estado_del_equipo = EnMantenimiento;
-	if (visualizacionDerivaciones == false) {
+	float costo_aux = 0; //definimos un auxiliar para el costo dependiendo del mantenimiento
+	estado_del_equipo = EnMantenimiento; //cambiamos el estado del equipo a "en matenimiento"
+	if (visualizacionDerivaciones == false) { //si es false lo arreglamos 
 		visualizacionDerivaciones = true;
-		costo_aux += 100;
+		costo_aux += 100; //y acumulamos el costo
 	}
-	if (modoDeTraficacion == false) {
+	if (modoDeTraficacion == false) { //si es false lo arreglamos
 		modoDeTraficacion = true;
-		costo_aux += 500;
+		costo_aux += 500; //seguimos acumulando el costo
 	}
-	actualizarFecha();
-	SetCostoMantenimiento(costo_aux);
-	return true;
+	actualizarFecha(); //cambiamos la fecha de ultimo mantenimiento a hoy
+	SetCostoMantenimiento(costo_aux); //calculamos el costo
+	return true; //todo ok
 }
 
 void Electrocardiograma::verificarEquipo()
 {
-	bool verificado = mantenimientoPreventivo();
-	if (verificado == true)
-		estado_del_equipo = EnEspera; //listo para usar
-	if (verificado == false)
-		estado_del_equipo = fueraDeServicio; //no se puede usar
+	bool verificado = mantenimientoPreventivo(); 
+	if (verificado == true) //si se arreglo correctamente
+		estado_del_equipo = EnEspera; //listo para usar, cambiamos el estado a en espera
+	if (verificado == false) //si no
+		estado_del_equipo = fueraDeServicio; //no se puede usar, lo ponemos en fuera de servicio
 }
 
 void Electrocardiograma::definirCalendario()
 {
 	for (unsigned int i = 0; i < calendario->getCA(); i++) {
 		srand(time(NULL));
-		int diaRandom = 1 + rand() % 29;
-		int mesRandom = 1 + rand() % 13;
-		int anioRandom = 2021 + rand() % 2024;
-		calendario[i] + (&Fecha(diaRandom, mesRandom, anioRandom));
+		int diaRandom = 1 + rand() % 29; //definimos dia random
+		int mesRandom = 1 + rand() % 13; //definimos mes random
+		int anioRandom = 2021 + rand() % 2024; //y anio random
+		calendario[i] + (&Fecha(diaRandom, mesRandom, anioRandom)); //agregamos esa fecha al calendario de electro
 	}
 }
 

@@ -17,35 +17,35 @@ MesasAnestesia::~MesasAnestesia()
 bool MesasAnestesia::mantenimientoPreventivo()
 {
 	//definimos costos fijos de cada mantenimiento
-	float costo_aux = 0;
-	estado_del_equipo = EnMantenimiento;
-	if (nivelSuenio < 50) {
+	float costo_aux = 0; //definimos un auxiliar para el costo dependiendo del mantenimiento realizado
+	estado_del_equipo = EnMantenimiento; //ponemos el equipo en mantenimiento
+	if (nivelSuenio < 50) { //si el nivel de suenio es menor que 50 lo subimos a 100 y le sumamos al costo
 		nivelSuenio = 100;
 		costo_aux += 200;
 	}
-	if (alarmaAltaFrec == false) {
+	if (alarmaAltaFrec == false) { //si es false lo arreglamos y acumulamos costos
 		alarmaAltaFrec = true;
 		costo_aux += 200;
 	}
-	if (alarmaBajaFrecuencia == false) {
+	if (alarmaBajaFrecuencia == false) { //si es false lo arreglamos y acumulamos costos
 		alarmaBajaFrecuencia = true;
 		costo_aux += 200;
 	}
-	if (volumenDeFlujo < volumenFijado) {
+	if (volumenDeFlujo < volumenFijado) { //si el volumen de flujo actual es menor al definido lo arreglamos
 		volumenDeFlujo = volumenFijado;
 		costo_aux += 200;
 	}
-	SetCostoMantenimiento(costo_aux);
-	actualizarFecha();
-	return true;
+	SetCostoMantenimiento(costo_aux); //pasamos el costo total
+	actualizarFecha(); //cambiamos la fecha de ultimo mantenimiento al dia de hoy
+	return true; 
 }
 
 void MesasAnestesia::verificarEquipo()
 {
 	bool verificado = mantenimientoPreventivo();
-	if (verificado == true)
-		estado_del_equipo = EnEspera; //listo para usar
-	if (verificado == false)
+	if (verificado == true)//si se arreglo correctamente
+		estado_del_equipo = EnEspera; //listo para usar, cambiamos el estado a en espera
+	if (verificado == false)//si no 
 		estado_del_equipo = fueraDeServicio; //no se puede usar
 }
 
@@ -53,10 +53,10 @@ void MesasAnestesia::definirCalendario()
 {
 	for (unsigned int i = 0; i < calendario->getCA(); i++) {
 		srand(time(NULL));
-		int diaRandom = 1 + rand() % 29;
-		int mesRandom = 1 + rand() % 13;
-		int anioRandom = 2021 + rand() % 2024;
-		calendario[i].AgregarItem(&Fecha(diaRandom, mesRandom, anioRandom));
+		int diaRandom = 1 + rand() % 29; //dia random
+		int mesRandom = 1 + rand() % 13;//mes random
+		int anioRandom = 2021 + rand() % 2024;//anio random
+		calendario[i].AgregarItem(&Fecha(diaRandom, mesRandom, anioRandom));//agregamos esa fecha al calendario de mesas de anestesia
 	}
 }
 

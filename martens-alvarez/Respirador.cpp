@@ -16,28 +16,27 @@ Respirador::~Respirador()
 
 }
 
-bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve true si se pudo realizar correctamente, 
-//false si no se pudo. Pone el equipo en mantenimiento
+bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve true si se pudo realizar correctamente, false si no
 {//taponamiento es flase si el flujo es distinto de cero y true si es igual a cero
-	float costo_aux = 0;
-	actualizarFecha();
-	estado_del_equipo = EnMantenimiento;
-	if (FlujoDeSalida != FlujoDeSalidaConfigurado) {
-		if (FlujoDeSalida == 0) {
+	float costo_aux = 0; //auxiliar para calcular el costo
+	estado_del_equipo = EnMantenimiento; //ponemos el equipo en mantenimiento
+	if (FlujoDeSalida != FlujoDeSalidaConfigurado) { //si el flujo de salida actual es distinto al configurado
+		if (FlujoDeSalida == 0) { //si es cero
 			taponamiento = true; //no hay flujo
 			return false; //el equipo no esta listo para usar
 		}
 		else {
-			FlujoDeSalida = FlujoDeSalidaConfigurado;
+			FlujoDeSalida = FlujoDeSalidaConfigurado; //si no es cero, lo arreglamos y le sumamos al costo total
 			costo_aux += 600;
 		}
 	}
-	if (alarmaAltaPresion == false || alarmaBajaPresion == false) {
+	if (alarmaAltaPresion == false || alarmaBajaPresion == false) { //si alguna de las alarmas es false las arreglamos
 		alarmaAltaPresion = true;
 		alarmaBajaPresion = true;
 		costo_aux += 400;
 	}
-	SetCostoMantenimiento(costo_aux);
+	actualizarFecha(); //cambiamos la fecha de ult mantenimiento a hoy
+	SetCostoMantenimiento(costo_aux); 
 	if (FlujoDeSalida == FlujoDeSalidaConfigurado && alarmaAltaPresion == true && alarmaBajaPresion == true && taponamiento == false) {
 		return true; //si esta todo ok devuelvo true
 	}
@@ -46,10 +45,10 @@ bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve 
 void Respirador::verificarEquipo()//si el mantenimientoPreventivo es true pone el equipo en espera, sino fuera de servicio
 {
 	bool verificado = mantenimientoPreventivo();
-	if (verificado == true)
-		estado_del_equipo = EnEspera; //listo para usar
-	if (verificado == false)
-		estado_del_equipo = fueraDeServicio; //no se puede usar
+	if (verificado == true) //si se arreglo correctamente
+		estado_del_equipo = EnEspera; //listo para usar, lo ponemos en espera para ser usado
+	if (verificado == false) //si no
+		estado_del_equipo = fueraDeServicio; //no se puede usar, queda fuera de servicio
 }
 
 void Respirador::definirCalendario()
