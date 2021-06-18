@@ -40,6 +40,7 @@ bool Respirador::mantenimientoPreventivo()//realiza el mantenimiento y devuelve 
 	if (FlujoDeSalida == FlujoDeSalidaConfigurado && alarmaAltaPresion == true && alarmaBajaPresion == true && taponamiento == false) {
 		return true; //si esta todo ok devuelvo true
 	}
+	return false;
 }
 
 void Respirador::verificarEquipo()//si el mantenimientoPreventivo es true pone el equipo en espera, sino fuera de servicio

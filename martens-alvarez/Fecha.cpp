@@ -34,10 +34,11 @@ Fecha::~Fecha()
 void Fecha::setHoy()
 {
 	time_t now = time(0);
-	tm* aux = localtime(&now); //obtengo fecha actual
-	fecha.tm_mday = aux->tm_mday;
-	fecha.tm_mon = aux->tm_mon;
-	fecha.tm_year = aux->tm_year;
+	tm* ltm=NULL;
+	localtime_s(ltm, &now); //obtengo fecha actual
+	fecha.tm_mday = ltm->tm_mday;
+	fecha.tm_mon = ltm->tm_mon;
+	fecha.tm_year = ltm->tm_year;
 }
 
 string Fecha::ToString()
