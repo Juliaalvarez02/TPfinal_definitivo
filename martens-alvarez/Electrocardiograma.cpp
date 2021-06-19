@@ -45,7 +45,7 @@ void Electrocardiograma::definirCalendario()
 		int diaRandom = 1 + rand() % 29; //definimos dia random
 		int mesRandom = 1 + rand() % 13; //definimos mes random
 		int anioRandom = 2021 + rand() % 2024; //y anio random
-		calendario[i] + (&Fecha(diaRandom, mesRandom, anioRandom)); //agregamos esa fecha al calendario de electro
+		calendario[i] + (new Fecha(diaRandom, mesRandom, anioRandom)); //agregamos esa fecha al calendario de electro
 	}
 }
 

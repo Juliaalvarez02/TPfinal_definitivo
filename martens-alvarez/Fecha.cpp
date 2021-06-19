@@ -40,6 +40,13 @@ void Fecha::setHoy()
 	fecha.tm_year = aux->tm_year;
 }
 
+bool Fecha::operator<(Fecha& otra)
+{
+	time_t aux_this = mktime(&(this->fecha));
+	time_t aux_otra = mktime(&(this.otra));
+	return aux_this < aux_otra;
+}
+
 string Fecha::ToString()
 {
 	return to_string(fecha.tm_mday) +"/" + to_string(fecha.tm_mon + 1) + "/" + to_string(fecha.tm_year + 1900);

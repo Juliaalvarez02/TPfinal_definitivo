@@ -59,7 +59,7 @@ void Respirador::definirCalendario()
 		int diaRandom = 1 + rand() % 29;
 		int mesRandom = 1 + rand() % 13;
 		int anioRandom = 2021 + rand() % 2024;
-		calendario[i].AgregarItem(&Fecha(diaRandom, mesRandom, anioRandom));
+		calendario[i].AgregarItem(new Fecha(diaRandom, mesRandom, anioRandom));
 	}
 }
 

@@ -244,3 +244,4 @@ istream& operator>>(istream& in, ListaT<T>& Lista)
 	in >> aux;
 	return in;
 }
+

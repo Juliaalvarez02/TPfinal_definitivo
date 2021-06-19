@@ -31,20 +31,22 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
     }
 }
 
-void Sistema::buscarXcodigo(const string codigo)
+Equipos* Sistema::buscarXcodigo(const string codigo)
 {
-    for (unsigned int i = 0; i < listaEquipos->getCA(); i++) { //buscamos el equipo por codigo recorriendo la lista de equipos
+    unsigned int i;
+    for (i = 0; i < listaEquipos->getCA(); i++) { //buscamos el equipo por codigo recorriendo la lista de equipos
         if ((*listaEquipos)[i]->GetCodigo()==codigo) {
-            (*listaEquipos)[i]->imprimir();
+            return (*listaEquipos)[i];
         }
     }
+    return NULL;
 }
 
-void Sistema::buscarXnombre(string nombre)
+Equipos* Sistema::buscarXnombre(string nombre)
 {
     for (unsigned int i = 0; i < listaEquipos->getCA(); i++) {//recorremos la lista y buscamos por descripcion/nombre
         if ((*listaEquipos)[i]->GetDescripcion() == nombre) {
-            (*listaEquipos)[i]->imprimir();
+            return (*listaEquipos)[i];
         }
     }
 }
@@ -53,7 +55,6 @@ Equipos* Sistema::buscarXtipo(Equipos* equipoABuscar)
 {
     for (unsigned int i = 0; i < listaEquipos->getCA(); i++) { //recorremos la lista y buscamos por tipo
         if ((*listaEquipos)[i] == equipoABuscar) {
-            (*listaEquipos)[i]->imprimir();
             return (*listaEquipos)[i];
         }
     }
@@ -63,7 +64,7 @@ Equipos* Sistema::buscarXtipo(Equipos* equipoABuscar)
 void Sistema::listarMantenimientos()
 {
     ListaT<Equipos>* listaHechos = new ListaT<Equipos>(); //creamos una lista auxiliar para los mantenimientos ya realizados
-    Fecha* diaHoy = NULL; //una fecha para el dia de hoy
+    Fecha* diaHoy = new Fecha(); //una fecha para el dia de hoy
     diaHoy->setHoy();
 
     for (unsigned int i = 0; i < listaEquipos->getCA(); i++) { //recorremos la lista
@@ -76,6 +77,8 @@ void Sistema::listarMantenimientos()
     for (unsigned int i = 0; i < listaHechos->getCA(); i++) { //recorremos la lista de REALIZADOS HOY
         costoTotal += (*listaHechos)[i]->getCosto(); //calculamos el costo total de todos los equipos
     }
+    cout << "\nlista de mantenimientos del dia: " << endl;
+    cout << listaHechos->To_String() << endl;
 }
 
 void Sistema::listarMantenimientosPendientes()
@@ -89,7 +92,9 @@ void Sistema::listarMantenimientosPendientes()
             listaPendientes->AgregarItem((*listaEquipos)[i]);
         }
     }
-    
+    cout << "\nlista de mantenimientos pendientes: " << endl;
+    cout << listaPendientes->To_String() << endl;
+
     float costoTotal = 0; //acum para costo toal de pendientes
     for (unsigned int i = 0; i < listaPendientes->getCA(); i++) { //recorro lista de PENDIENTES
         costoTotal += (*listaPendientes)[i]->getCosto(); //acumulamos todos los costos
@@ -115,6 +120,85 @@ void Sistema::verificarRandom()
     aux->verificarEquipo(); //verificamos ese equipo random
 }
 
+void Sistema::CrearListaDEEquipos()
+{
+    //creo un equipo de cada tipo
+    Equipos* respirador = new Respirador("111", "respirador", 50, "terapia", "terapia", 100, new Fecha(5, 3, 2021), 90, false, true, false);
+    Equipos* electro = new Electrocardiograma("222", "electro", 55.5, "consultorio", "terapia", 100, new Fecha(5, 4, 2021), false,
+        true);
+    Equipos* mesasAnestesia = new MesasAnestesia("333", "mesasAnestesia", 60, "quirofano", "quirofano", 100, new Fecha(5, 8, 2020),
+        false, true, 45, 100);
+    Equipos* respirador2 = new Respirador("444", "respirador", 80, "sala general", "terapia", 100, new Fecha(3, 2, 2021), 40, false, false, false);
+   
+    //agrego los equipos a la lista
+    try {
+        *listaEquipos + respirador;
+    }
+    catch (std::exception& e) {
+        cout << e.what() << endl;
+    }
+    try {
+        *listaEquipos + electro;
+    }
+    catch (std::exception& e1) {
+        cout << e1.what() << endl;
+    }
+    try {
+        *listaEquipos + mesasAnestesia;
+    }
+    catch (std::exception& e2) {
+        cout << e2.what() << endl;
+    }
+    try {
+        *listaEquipos + respirador2;
+    }
+    catch (std::exception& e3) {
+        cout << e3.what() << endl;
+    }
+    //verifico todos los equipos menos el respirador2
+    electro->verificarEquipo();
+    mesasAnestesia->verificarEquipo();
+    respirador->verificarEquipo();
+    rastrearUbicacion(mesasAnestesia);
+    buscarXtipo(electro);
+}
+
+void Sistema::imprimirLista()
+{
+    cout << "\nLISTA DE EQUIPOS: " << endl;
+    cout << listaEquipos->To_String() << endl;
+}
+
+void Sistema::eliminarEquippo()
+{
+    Equipos* equipo = buscarXcodigo("222");
+    if (equipo != NULL) {
+        *listaEquipos - equipo;
+    }
+}
+
+void Sistema::imprimirAlerta()
+{
+    Equipos* equipo = buscarXcodigo("111");
+    Equipos* equipo2 = buscarXcodigo("444");
+    if (equipo != NULL) {
+        try {
+            equipo->imprimirAlerta();
+        }
+        catch (std::exception& e3) {
+            cout << e3.what() << endl;
+        }
+    }
+    if (equipo2 != NULL) {
+        try {
+            equipo2->imprimirAlerta();
+        }
+        catch (std::exception& e3) {
+            cout << e3.what() << endl;
+        }
+    }
+}
+
 ListaT<Equipos>* Sistema::GetListaEquipos()
 {
 	return listaEquipos;
@@ -123,14 +207,4 @@ ListaT<Equipos>* Sistema::GetListaEquipos()
 void Sistema::SetLista(ListaT<Equipos>* lista)
 {
 	listaEquipos = lista;
-}
-
-string Sistema::toString()
-{
-    return string();
-}
-
-void Sistema::imprimir()
-{
-    cout << toString() << endl;
 }

@@ -56,7 +56,7 @@ void MesasAnestesia::definirCalendario()
 		int diaRandom = 1 + rand() % 29; //dia random
 		int mesRandom = 1 + rand() % 13;//mes random
 		int anioRandom = 2021 + rand() % 2024;//anio random
-		calendario[i].AgregarItem(&Fecha(diaRandom, mesRandom, anioRandom));//agregamos esa fecha al calendario de mesas de anestesia
+		calendario[i].AgregarItem(new Fecha(diaRandom, mesRandom, anioRandom));//agregamos esa fecha al calendario de mesas de anestesia
 	}
 }
 

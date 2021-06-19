@@ -16,6 +16,7 @@ public:
 	~Fecha();
 
 	void setHoy();
+	bool operator<(Fecha& otra);
 
 	//tostring e imprimir
 	string ToString();
