@@ -20,13 +20,13 @@ void Sistema::rastrearUbicacion(Equipos* equipoRastreado)
     
     if (aux != NULL) {
        if (dynamic_cast<Electrocardiograma*>(equipoRastreado)!=NULL) { //si es un electro imprimimos su ubicacion
-            cout << "Lugar actual electro: "<<aux->getLugarActual() << endl;;
+            cout << "Electro: "<<aux->getLugarActual() << endl;;
        }
        if (dynamic_cast<Respirador*>(equipoRastreado) != NULL) { //si es un respirador imprimimos su ubicacion
-             cout <<"Lugar actual respirador: "<< aux->getLugarActual() << endl;;
+             cout <<"Respirador: "<< aux->getLugarActual() << endl;;
        }
        if (dynamic_cast<MesasAnestesia*>(equipoRastreado) != NULL) { //si es una mesa de anestesia imprimimos su ubicacion
-             cout << "Lugar actual mesa de anestesia: " << aux->getLugarActual() << endl;;
+             cout << "Mesa de anestesia: " << aux->getLugarActual() << endl;;
        }
     }
 }
@@ -159,7 +159,14 @@ void Sistema::CrearListaDEEquipos()
     electro->verificarEquipo();
     mesasAnestesia->verificarEquipo();
     respirador->verificarEquipo();
+
+    //Rastreo todos los equipos
+    cout << "Lugar actual de los equipos: " << endl;
     rastrearUbicacion(mesasAnestesia);
+    rastrearUbicacion(respirador);
+    rastrearUbicacion(electro);
+    rastrearUbicacion(respirador2);
+
     buscarXtipo(electro);
 }
 
@@ -187,7 +194,7 @@ void Sistema::imprimirAlerta()
 
     if (equipo1 != NULL) {
         try {
-            cout << "el respirador: " << endl;
+            cout << "El respirador ";
             equipo1->imprimirAlerta();
         }
         catch (std::exception& e1) {
@@ -196,7 +203,7 @@ void Sistema::imprimirAlerta()
     }
     if (equipo2 != NULL) {
         try {
-            cout << "el electro: " << endl;
+            cout << "El electro ";
             equipo2->imprimirAlerta();
         }
         catch (std::exception& e2) {
@@ -205,7 +212,7 @@ void Sistema::imprimirAlerta()
     }
     if (equipo3 != NULL) {
         try {
-            cout << "la mesa de anestesia: " << endl;
+            cout << "La mesa de anestesia ";
             equipo3->imprimirAlerta();
         }
         catch (std::exception& e3) {
@@ -214,7 +221,7 @@ void Sistema::imprimirAlerta()
     }
     if (equipo4 != NULL) {
         try {
-            cout << "el respirador2: " << endl;
+            cout << "El respirador2 ";
             equipo4->imprimirAlerta();
         }
         catch (std::exception& e4) {
