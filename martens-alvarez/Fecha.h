@@ -17,6 +17,7 @@ public:
 
 	void setHoy();
 	bool operator<(Fecha& otra);
+	bool operator==(Fecha& otra);
 
 	//tostring e imprimir
 	string ToString();

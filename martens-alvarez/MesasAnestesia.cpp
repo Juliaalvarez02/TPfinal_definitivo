@@ -51,12 +51,13 @@ void MesasAnestesia::verificarEquipo()
 
 void MesasAnestesia::definirCalendario()
 {
-	for (unsigned int i = 0; i < calendario->getCA(); i++) {
+	for (unsigned int i = 0; i < 4; i++) {
 		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29; //dia random
 		int mesRandom = 1 + rand() % 13;//mes random
 		int anioRandom = 2021 + rand() % 2024;//anio random
-		calendario[i].AgregarItem(new Fecha(diaRandom, mesRandom, anioRandom));//agregamos esa fecha al calendario de mesas de anestesia
+		Fecha* fecha = new Fecha(diaRandom, mesRandom, anioRandom);
+		calendario[i].AgregarItemFecha(fecha);
 	}
 }
 

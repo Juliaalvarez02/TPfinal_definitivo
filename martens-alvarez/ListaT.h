@@ -29,6 +29,7 @@ public:
 
 	void Listar();
 	T* BuscarxTipo(T*equipo);
+	void AgregarItemFecha(T*fecha);
 	T* operator [](unsigned int pos);
 	T* getItem(unsigned int pos);
 	string To_String();
@@ -185,6 +186,14 @@ inline T * ListaT<T>::BuscarxTipo(T * equipo)
 			return lista[i];
 	}
 	return NULL;
+}
+
+template<class T>
+inline void ListaT<T>::AgregarItemFecha(T* fecha)
+{
+	if (CA < tam) {
+		lista[CA++] = fecha;
+	}
 }
 
 template<class T>

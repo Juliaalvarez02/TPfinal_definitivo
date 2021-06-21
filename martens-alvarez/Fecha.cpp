@@ -43,8 +43,15 @@ void Fecha::setHoy()
 bool Fecha::operator<(Fecha& otra)
 {
 	time_t aux_this = mktime(&(this->fecha));
-	time_t aux_otra = mktime(&(this.otra));
+	time_t aux_otra = mktime(&(otra.fecha));
 	return aux_this < aux_otra;
+}
+
+bool Fecha::operator==(Fecha& otra)
+{
+	time_t aux_this = mktime(&(this->fecha));
+	time_t aux_otra = mktime(&(otra.fecha));
+	return aux_this == aux_otra;
 }
 
 string Fecha::ToString()

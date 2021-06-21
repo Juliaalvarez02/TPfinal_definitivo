@@ -15,6 +15,8 @@ class Sistema
 	ListaT<Equipos>* listaEquipos;
 	float cuenta_corriente;
 
+	friend bool Fecha:: operator<(Fecha& otra);
+	friend bool Fecha:: operator==(Fecha& otra);
 public:
 	//Constructor y destructor
 	Sistema(float cuenta_corriente);
@@ -32,6 +34,7 @@ public:
 	void imprimirLista();
 	void eliminarEquippo();
 	void imprimirAlerta();
+	void definirCalendarios();
 
 	//geters y setters
 	ListaT<Equipos>* GetListaEquipos();

@@ -54,12 +54,13 @@ void Respirador::verificarEquipo()//si el mantenimientoPreventivo es true pone e
 
 void Respirador::definirCalendario()
 {
-	for (unsigned int i = 0; i < calendario->getCA(); i++) {
+	for (unsigned int i = 0; i < 4; i++) {
 		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29;
 		int mesRandom = 1 + rand() % 13;
 		int anioRandom = 2021 + rand() % 2024;
-		calendario[i].AgregarItem(new Fecha(diaRandom, mesRandom, anioRandom));
+		Fecha* fecha = new Fecha(diaRandom, mesRandom, anioRandom);
+		calendario[i].AgregarItemFecha(fecha);
 	}
 }
 

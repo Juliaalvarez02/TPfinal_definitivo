@@ -40,12 +40,13 @@ void Electrocardiograma::verificarEquipo()
 
 void Electrocardiograma::definirCalendario()
 {
-	for (unsigned int i = 0; i < calendario->getCA(); i++) {
+	for (unsigned int i = 0; i < 4; i++) {
 		srand(time(NULL));
 		int diaRandom = 1 + rand() % 29; //definimos dia random
 		int mesRandom = 1 + rand() % 13; //definimos mes random
 		int anioRandom = 2021 + rand() % 2024; //y anio random
-		calendario[i] + (new Fecha(diaRandom, mesRandom, anioRandom)); //agregamos esa fecha al calendario de electro
+		Fecha* fecha = new Fecha(diaRandom, mesRandom, anioRandom);
+		calendario[i].AgregarItemFecha(fecha);
 	}
 }
 

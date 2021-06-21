@@ -37,7 +37,9 @@ bool Equipos::imprimirAlerta()
 		cout << "Se encuentra fuera de lugar" << endl;
 		return false;
 	}
-	else
+	else {
+		cout << "se encuentra en su lugar" << endl;
+	}
 		return true;
 }
 
